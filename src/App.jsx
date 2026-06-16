@@ -7,7 +7,9 @@ import { Chatbot } from 'supersimpledev'
 
 
 function App() {
-        const [chatMessages, setChatMessages] =  useState(JSON.parse(localStorage.getItem('messages')))
+        const [chatMessages, setChatMessages] = useState(
+          JSON.parse(localStorage.getItem('messages')) || []
+        )
         //const [chatMessages, setChatMessages] = array;
         //const chatMessages = array[0];
         //const setChatMessages = array[1];
@@ -22,7 +24,7 @@ function App() {
               return `Sure! Here's a unique ID: ${crypto.randomUUID()}`;
             }
           })
-        });
+        },[]);
 
         useEffect(() => {
           localStorage.setItem('messages',JSON.stringify(chatMessages))
